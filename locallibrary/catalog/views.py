@@ -135,7 +135,8 @@ class AuthorCreate(CreateView):
     initial={'date_of_death':'12/10/2016',}
 
 def author_update(request, pk):
-    author = get_object_or_404(Author, pk=pk)
+    author = get_object_or_404(Author,id=pk)
+    author_id = Book.objects.filter(id=pk).first()
 
     if request.method == 'POST':
 
@@ -157,7 +158,7 @@ def author_update(request, pk):
         form = UpdateAuthorForm(initial={'update_author_date_of_death': proposed_date_of_death, })
 
     return render(request, 'catalog/book_update_authors.html',
-                  {'form': form, 'authors': author})  # render объединяет запрос со словарём
+                  {'form': form, 'authors': author, 'author_id': author_id})  # render объединяет запрос со словарём
 
 
     # ФОРМЫ ДЛЯ АВТОРОВ, НЕОБХОДИМО ИМПОРТИРОВАТЬ Create, Update, Delete
