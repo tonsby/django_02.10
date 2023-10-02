@@ -1,0 +1,22 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    {%if user.is_staff%}
+    <h1>Все взятые книги</h1>
+    <ul>
+        {% if bookinstance_list %}
+    {% for librbooks in bookinstance_list %}
+      <li class="{% if librbooks.is_overdue %}text-danger{% endif %}">
+        <a href="{% url 'book-detail' librbooks.book.pk %}">{{librbooks.book.title}}</a> ({{ librbooks.due_back }})
+          {% if librbooks.zaemshik%} ({{librbooks.zaemshik}}) <a href="{% url 'return-books' librbooks.id %}"> Вернуть книгу </a> <a href="{% url 'renew-book-librarian' librbooks.id %}">Обновить</a>{%endif%}
+
+      </li>
+    {% endfor %}
+        {%else%}
+        Все книги в наличии
+    </ul>
+{% endif%}
+    {%else%}
+        <meta http-equiv="refresh" content="0;URL=http://127.0.0.1:8000/catalog"/>
+{% endif%}
+{% endblock %}

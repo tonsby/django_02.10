@@ -1,0 +1,34 @@
+{% extends "base_generic.html" %}
+{% block content %}
+
+    <h1>Обновить имя автора: {{authors.first_name}}</h1> <!--authors - переменная из views.py функции AuthorUpdate-->
+    <h1>Обновить фамилию автора: {{authors.last_name}}</h1> <!--authors - переменная из views.py функции AuthorUpdate-->
+
+    <form action="" method="post"> <!--пустое значение атрибута action, означает, что данные из формы будут переданы обратно по текущему URL-адресу данной страницы (чего мы и хотим!)-->
+        {% csrf_token %} <!--Добавляйте в каждый шаблон Django, в котором вы создаёте форму для отправки данных методом POST. Это поможет уменьшить вероятность взлома вашего сайта злоумышленниками.-->
+        <table>
+        {{ form }}
+        </table>
+        <input type="submit" value="Submit" />
+    </form>
+
+{% endblock %}
+
+<!--
+   {{ form }}
+по умолчанию содержит в себе:
+<tr>
+  <th><label for="id_renewal_date">Renewal date:</label></th>
+  <td>
+    <input
+      id="id_renewal_date"
+      name="renewal_date"
+      type="text"
+      value="2016-11-08"
+      required />
+    <br />
+    <span class="helptext"
+      >Enter date between now and 4 weeks (default 3 weeks).</span
+    >
+  </td>
+</tr>

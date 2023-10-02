@@ -1,0 +1,21 @@
+
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Список Авторов</h1>
+
+    {% if author_list %}
+    <ul>
+
+      {% for author in author_list %}
+      <li>
+          <a href="{{ author.get_absolute_url }}">{{ author}}</a> ({{author.date_of_birth}} - {{author.date_of_death}})<a href="{% url 'author_create' %}"> "Создать Автора"</a <a href="{% url 'author_update' pk=author.pk %}"> Обновить </a
+          <!--# Ждет pk - без него он не понимает к чему обращаться-->
+      </li>
+      {% endfor %}
+
+    </ul>
+    {% else %}
+      <p>Авторов ещё нет.</p>
+    {% endif %}
+{% endblock %}
