@@ -1,0 +1,23 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>Местная БиблиотЭка</h1>
+
+  <p>Добро Пожаловать в <em>Местную Библиотеку</em>, a very basic Django website developed as a tutorial example on the Mozilla Developer Network.</p>
+
+<h2>Основное содержимое</h2>
+
+  <p>Библиотека содержит в себе большой объем книг:</p>
+  <ul>
+    <li><strong>Книги:</strong> {{ num_books }}</li>
+    <li><strong>Копии:</strong> {{ num_instances }}</li>
+    <li><strong>Доступные экземпляры:</strong> {{ num_instances_available }}</li>
+    <li><strong>Авторы:</strong> {{ num_authors }}</li>
+    <li><strong>Жанры:</strong> {{ num_genres }}</li>
+    <li><strong>Книги по названию:</strong> {{ num_char_books }}</li>
+  </ul>
+<p>
+  Вы посещали данную страницу {{ num_visits }} раз {% if num_visits == 1 %} time{%
+  else %} times{% endif %}.
+</p>
+{% endblock %}
