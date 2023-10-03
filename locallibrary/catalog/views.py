@@ -143,7 +143,7 @@ def author_update(request, pk):
 
         # Проверка валидности данных формы:
         if form.is_valid():
-            print (form.cleaned_data)
+            print (f'ПОСМОТРИ СЮДА {form.cleaned_data}')
             # Обработка данных из form.cleaned_data
             # (здесь мы просто присваиваем их полю due_back)
             #author.date_of_death = form.cleaned_data['date_of_death']
@@ -169,10 +169,20 @@ def author_update(request, pk):
     model = Author
     fields = ['first_name','last_name','date_of_birth','date_of_death']
 
-class AuthorDelete(DeleteView):
+#class AuthorDelete(DeleteView):
     model = Author
     success_url = reverse_lazy('authors')
 
+def delete_author(request,pk):
+   author=get_object_or_404(Author,pk=pk)
+
+   if request.method =='POST':
+
+        author.delete()
+        return redirect ('authors',)
+
+   else:
+        return render(request, 'catalog/author_confirm_delete.html', {'author':author})
 
 def get_context_data(self, **kwargs):
         # В первую очередь получаем базовую реализацию контекста

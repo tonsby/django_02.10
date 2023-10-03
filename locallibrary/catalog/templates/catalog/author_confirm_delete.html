@@ -8,7 +8,26 @@
 
   <form action="" method="POST">
     {% csrf_token %}
-    <input type="submit" value="Yes, delete." />
+    <input type="submit" value="Удалить" />
+    <input type="button" value="Отмена" onClick='catalog/author_list.html="http:127.0.0.1:8000/catalog/authors/"'>
   </form>
 {%endif%}
 {% endblock %}
+<!--
+   {{ form }}
+по умолчанию содержит в себе:
+<tr>
+  <th><label for="id_renewal_date">Renewal date:</label></th>
+  <td>
+    <input
+      id="id_renewal_date"
+      name="renewal_date"
+      type="text"
+      value="2016-11-08"
+      required />
+    <br />
+    <span class="helptext"
+      >Enter date between now and 4 weeks (default 3 weeks).</span
+    >
+  </td>
+</tr>

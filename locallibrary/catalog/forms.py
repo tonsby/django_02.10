@@ -61,7 +61,6 @@ class UpdateAuthorForm(ModelForm):
 
 
 
-
 class RenewBookModelForm(ModelForm):
     #Чтобы  добавить валидацию, вы можете  использовать  тот  же  способ как и  для класса Form —
     #вы определяете функцию с  именем clean_field_name()  из которой выбрасываете исключение ValidationError,если  это необходимо.

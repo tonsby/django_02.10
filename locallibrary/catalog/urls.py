@@ -14,6 +14,6 @@ urlpatterns = [
     url(r'^book/(?P<pk>[-\w]+)/renew/$', views.renew_book_librarian, name='renew-book-librarian'),
     url(r'^author/create/$', views.AuthorCreate.as_view(), name='author_create'),
     url(r'^author/(?P<pk>\d+)/update/$', views.author_update, name='author_update'),
-    url(r'^author/(?P<pk>\d+)/delete/$', views.AuthorDelete.as_view(), name='author_delete'),
+    url(r'^author/(?P<pk>\d+)/delete/$', views.delete_author, name='author_delete'),
     path (r'^returnedbooks/<str:pk>', views.return_books, name='return-books'),
 ]
