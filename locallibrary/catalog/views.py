@@ -143,10 +143,12 @@ def author_update(request, pk):
 
         # Проверка валидности данных формы:
         if form.is_valid():
+            print (form.cleaned_data)
             # Обработка данных из form.cleaned_data
             # (здесь мы просто присваиваем их полю due_back)
-            author.date_of_death = form.cleaned_data['update_author_date_of_death']
-            author.first_name = ['update_author_first_name']
+            #author.date_of_death = form.cleaned_data['date_of_death']
+            author.first_name =form.cleaned_data['first_name']
+            author.last_name= form.cleaned_data['last_name']
             author.save()
 
             # Переход по адресу 'authors':

@@ -33,12 +33,12 @@ class RenewBookForm(forms.Form):
 
 # Если необходимо иметь много полей, то такой способ построения формы может значительно уменьшить количество кода и ускорить разработку!
 class UpdateAuthorForm(ModelForm):
-    update_author_name = forms.CharField(max_length=100, help_text="Введите новое имя")
-    update_author_last_name = forms.CharField(max_length=100, help_text="Введите новое имя")
-    update_author_date_of_death = forms.DateField(help_text="Введите новую дату смерти ")
+   # update_author_name = forms.CharField(max_length=100, help_text="Введите новое имя")
+    #update_author_last_name = forms.CharField(max_length=100, help_text="Введите новое имя")
+    #update_author_date_of_death = forms.DateField(help_text="Введите новую дату смерти ")
 
     def clean_update_author_date_of_death (self):
-        data = self.cleaned_data['update_author_date_of_death'] #cleaned_ - ("очистка") нормализация до согласованного формата
+        data = self.cleaned_data['date_of_death'] #cleaned_ - ("очистка") нормализация до согласованного формата
                                                 #Предупреждение: Важно: Хотя вы также можете получить доступ к данным формы непосредственно через запрос (например request.POST['renewal_date'],
                                                  # или request.GET['renewal_date'] (в случае GET-запроса), это НЕ рекомендуется. Очищенные данные проверены на вредоносность и преобразованы в типы, совместимые с Python.
                                                  # то есть очистка - это удаление неправильных символов, которые потенциально могут использоваться для отправки вредоносного содержимого на сервер
